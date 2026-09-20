@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товарів — Evo PRINT</title>
+    <link rel="icon" type="image/jpeg" href="./img/logo.jpg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#7C3AED',
+                            pink: '#EC4899',
+                            orange: '#F97316',
+                            yellow: '#EAB308',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-brand {
+            background: linear-gradient(135deg, #7C3AED 0%, #EC4899 35%, #F97316 70%, #EAB308 100%);
+        }
+        .gradient-brand-text {
+            background: linear-gradient(135deg, #7C3AED 0%, #EC4899 40%, #F97316 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-btn {
+            background: linear-gradient(90deg, #7C3AED 0%, #EC4899 50%, #F97316 100%);
+            background-size: 200% auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gradient-btn:hover {
+            background-position: right center;
+            box-shadow: 0 12px 25px -8px rgba(236, 72, 153, 0.5);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="./img/logo.jpg" alt="Evo PRINT Logo" class="w-12 h-12 rounded-full object-cover shadow-md transform hover:rotate-6 transition duration-300">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-black tracking-tight gradient-brand-text leading-none">evo</span>
+                    <span class="text-xs font-bold text-slate-500 tracking-widest uppercase">PRINT</span>
+                </div>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="hidden lg:flex items-center gap-7 font-bold text-slate-600 text-sm">
+                <a href="index.html" class="hover:text-pink-600 transition-colors">Головна</a>
+                <a href="catalog.html" class="text-pink-600 font-extrabold">Каталог</a>
+                <a href="index.html#builder" class="hover:text-pink-600 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-wand-magic-sparkles text-pink-500"></i> Конструктор
+                </a>
+                <a href="index.html#wholesale" class="hover:text-pink-600 transition-colors">Опт / Бізнесу</a>
+                <a href="index.html#contacts" class="hover:text-pink-600 transition-colors">Контакти</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCart()" class="relative p-2.5 text-slate-700 hover:text-pink-600 hover:bg-pink-50 rounded-full transition-all">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 gradient-brand text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header Section -->
+            <div class="mb-10 text-center md:text-left">
+                <span class="text-xs font-black text-pink-600 uppercase tracking-widest">Повний асортимент</span>
+                <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mt-1">Каталог товарів</h1>
+                <p class="text-slate-500 mt-2">Обирайте серед усіх готових дизайнів або знаходьте потрібне за пошуком</p>
+            </div>
+
+            <!-- Controls: Search & Category Filters -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm mb-12 space-y-6">
+                
+                <!-- Search Bar -->
+                <div class="relative max-w-xl">
+                    <input type="text" id="search-input" oninput="handleSearch()" placeholder="Пошук за назвою чи принтом..." class="w-full pl-11 pr-4 py-3 bg-slate-50 rounded-2xl border border-slate-200 focus:bg-white focus:ring-2 focus:ring-pink-500 outline-none transition-all text-sm">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-base"></i>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
+                    <div id="category-filters" class="flex flex-wrap gap-2">
+                        <button onclick="filterCategory('trend')" class="cat-btn px-4 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">🔥 Тренди</button>
+                        <button onclick="filterCategory('patriotic')" class="cat-btn px-4 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Патріотичні</button>
+                        <button onclick="filterCategory('anime')" class="cat-btn px-4 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Аніме</button>
+                        <button onclick="filterCategory('minimalism')" class="cat-btn px-4 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Мінімалізм</button>
+                        <button onclick="filterCategory('all')" class="cat-btn active px-4 py-2.5 rounded-xl text-sm font-bold transition-all bg-slate-900 text-white shadow-sm">Переглянути весь каталог</button>
+                    </div>
+
+                    <span id="products-count" class="text-xs font-bold text-slate-400">Знайдено: 8 товарів</span>
+                </div>
+            </div>
+
+            <!-- Dynamic Product Grid -->
+            <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Items rendered via JS -->
+            </div>
+
+            <div id="empty-state" class="hidden text-center py-16">
+                <i class="fa-solid fa-box-open text-5xl text-slate-300 mb-4"></i>
+                <h3 class="text-lg font-bold text-slate-700">Товарів не знайдено</h3>
+                <p class="text-sm text-slate-400 mt-1">Спробуйте змінити запит у пошуку або оберіть іншу категорію</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden transition-opacity duration-300">
+        <div onclick="toggleCart()" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between">
+            <div class="p-6 border-b border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping text-pink-600 text-xl"></i>
+                    <h3 class="font-black text-slate-900 text-lg">Ваш кошик</h3>
+                </div>
+                <button onclick="toggleCart()" class="p-2 text-slate-400 hover:text-slate-600 rounded-lg">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items" class="p-6 overflow-y-auto flex-grow space-y-4"></div>
+            <div class="p-6 border-t border-slate-100 bg-slate-50 space-y-4">
+                <div class="flex justify-between items-center text-slate-600 font-bold">
+                    <span>Разом:</span>
+                    <span id="cart-total" class="text-2xl font-black text-slate-900">0 ₴</span>
+                </div>
+                <button onclick="checkout()" class="w-full py-4 gradient-btn text-white font-black rounded-xl shadow-lg">
+                    Оформити замовлення
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full gradient-brand flex items-center justify-center text-white font-bold text-sm">e</div>
+                    <span class="text-xl font-black text-white">Evo PRINT</span>
+                </div>
+                <p class="text-sm text-slate-400">Якісний друк на футболках, власні принти та корпоративний мерч для бізнесу.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Розділи</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="catalog.html" class="hover:text-white transition-colors">Каталог товарів</a></li>
+                    <li><a href="index.html#builder" class="hover:text-white transition-colors">Онлайн Конструктор</a></li>
+                    <li><a href="index.html#wholesale" class="hover:text-amber-300 font-bold text-pink-400 transition-colors">🏢 Опт та Мерч</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Контакти</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fa-solid fa-phone text-pink-500 mr-2"></i> +380 (96) 988-86-40</li>
+                    <li><i class="fa-solid fa-envelope text-pink-500 mr-2"></i> mazurolena@gmail.com</li>
+                    <li><i class="fa-solid fa-location-dot text-pink-500 mr-2"></i> м. Хмельницький, вул. Січових Стрільців 1</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Ми в соцмережах</h4>
+                <div class="flex gap-3 text-lg">
+                    <a href="https://www.instagram.com/evoprint.ua/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+            © 2026 Evo PRINT. Всі права захищені.
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // Вставте сюди скопійоване посилання з Google Apps Script
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxKLRnceMAUUTbebw580QR2TDnCkb-Dw5Ps-mJLd4N8r87A-NdV3ONNxvine8J7QC9-Uw/exec';
+
+let products = [];
+let currentCategory = 'all';
+let searchQuery = '';
+let cart = [];
+
+// Завантаження даних з Google Таблиці
+async function fetchProducts() {
+    try {
+        const response = await fetch(GOOGLE_SHEET_URL);
+        products = await response.json();
+        renderProducts();
+    } catch (error) {
+        console.error('Помилка завантаження товарів з Google Таблиці:', error);
+    }
+}
+
+// Відображення товарів з урахуванням пошуку та фільтрів
+function renderProducts() {
+    const grid = document.getElementById('catalog-grid');
+    const emptyState = document.getElementById('empty-state');
+    const countLabel = document.getElementById('products-count');
+
+    if (!grid) return;
+
+    // Фільтрація масиву товарів за категорією та пошуковим запитом
+    let filtered = products.filter(product => {
+        const matchesCategory = (currentCategory === 'all') || (product.category === currentCategory);
+        const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+    });
+
+    if (countLabel) {
+        countLabel.innerText = `Знайдено: ${filtered.length} товарів`;
+    }
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+    }
+
+    if (emptyState) emptyState.classList.add('hidden');
+
+    grid.innerHTML = filtered.map(product => `
+        <div class="group bg-white rounded-2xl p-4 border border-slate-200/80 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class="aspect-square bg-slate-50 rounded-xl mb-4 overflow-hidden relative flex items-center justify-center p-6 border border-slate-100">
+                <img src="${product.image}" alt="${product.title}" class="w-full h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+            </div>
+            <h3 class="font-extrabold text-slate-800 text-base mb-1">${product.title}</h3>
+            <div class="flex items-center justify-between mt-3">
+                <span class="text-xl font-black text-slate-900">${product.price} ₴</span>
+                <button onclick="addToCart(${product.id})" class="px-4 py-2 rounded-xl gradient-btn text-white text-xs font-black shadow-sm">
+                    В кошик
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Функція фільтрації за категоріями
+function filterCategory(category) {
+    currentCategory = category;
+    
+    // Оновлення активної кнопки фільтра
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white', 'active');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+    });
+
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.remove('bg-slate-100', 'text-slate-600');
+        event.currentTarget.classList.add('bg-slate-900', 'text-white', 'active');
+    }
+
+    renderProducts();
+}
+
+// Пошук товарів
+function handleSearch() {
+    searchQuery = document.getElementById('search-input').value;
+    renderProducts();
+}
+
+// Функції кошика
+function addToCart(productId) {
+    const product = products.find(p => p.id == productId);
+    if (product) {
+        cart.push(product);
+        updateCartUI();
+        toggleCart();
+    }
+}
+
+function updateCartUI() {
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) cartCount.innerText = cart.length;
+
+    const container = document.getElementById('cart-items');
+    if (container) {
+        if (cart.length === 0) {
+            container.innerHTML = '<p class="text-center text-slate-400 py-10 font-medium">Ваш кошик порожній</p>';
+        } else {
+            container.innerHTML = cart.map((item, index) => `
+                <div class="flex items-center justify-between p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                    <div>
+                        <p class="font-bold text-slate-800 text-sm">${item.title}</p>
+                        <span class="text-xs font-black text-pink-600">${item.price} ₴</span>
+                    </div>
+                    <button onclick="removeFromCart(${index})" class="text-slate-400 hover:text-red-500 p-2">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+    }
+
+    const total = cart.reduce((sum, item) => sum + Number(item.price), 0);
+    const totalEl = document.getElementById('cart-total');
+    if (totalEl) totalEl.innerText = `${total} ₴`;
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function toggleCart() {
+    const modal = document.getElementById('cart-modal');
+    if (modal) modal.classList.toggle('hidden');
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert('Кошик порожній!');
+        return;
+    }
+    alert('Дякуємо за замовлення! Менеджер зв’яжеться з вами для підтвердження.');
+    cart = [];
+    updateCartUI();
+    toggleCart();
+}
+
+// Старт завантаження при відкритті
+window.onload = function() {
+    fetchProducts();
+};
+    </script>
+</body>
+</html>

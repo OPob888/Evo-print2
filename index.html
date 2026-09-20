@@ -116,7 +116,7 @@
 
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-7 font-bold text-slate-600 text-sm">
-                <a href="#catalog" class="hover:text-pink-600 transition-colors">Каталог</a>
+                <a href="catalog.html" class="hover:text-pink-600 transition-colors">Каталог</a>
                 <a href="#builder" class="hover:text-pink-600 transition-colors flex items-center gap-1.5">
                     <i class="fa-solid fa-wand-magic-sparkles text-pink-500"></i> Конструктор
                 </a>
@@ -449,33 +449,45 @@
         </section>
 
         <!-- CATALOG SECTION -->
-        <section id="catalog" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-                    <div>
-                        <span class="text-xs font-black text-pink-600 uppercase tracking-widest">Готові Дизайни</span>
-                        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1">Каталог футболок</h2>
-                        <p class="text-slate-500 mt-2">Обирай готовий трендовий принт або натхнення для власного дизайну</p>
-                    </div>
-
-                    <!-- Category Filters -->
-                    <div id="category-filters" class="flex flex-wrap gap-2">
-                        <button onclick="filterCategory('all')" class="cat-btn active px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-900 text-white shadow-sm">Всі</button>
-                        <button onclick="filterCategory('trend')" class="cat-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">🔥 Тренди</button>
-                        <button onclick="filterCategory('patriotic')" class="cat-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Патріотичні</button>
-                        <button onclick="filterCategory('anime')" class="cat-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Аніме</button>
-                        <button onclick="filterCategory('minimalism')" class="cat-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Мінімалізм</button>
-                    </div>
-                </div>
-
-                <!-- Dynamic Catalog Grid -->
-                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Products rendered via JS -->
-                </div>
-
+        <!-- CATALOG SECTION -->
+<section id="catalog" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+                <span class="text-xs font-black text-pink-600 uppercase tracking-widest">Готові Дизайни</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1">Каталог футболок</h2>
+                <p class="text-slate-500 mt-2">Обирай готовий трендовий принт або натхнення для власного дизайну</p>
             </div>
-        </section>
+
+            <!-- Category Filters -->
+            <div id="category-filters" class="flex flex-wrap gap-2">
+                <button onclick="filterCategory('trend')" class="cat-btn active px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-900 text-white shadow-sm">🔥 Тренди</button>
+                <button onclick="filterCategory('patriotic')" class="cat-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Патріотичні</button>
+                <button onclick="filterCategory('anime')" class="cat-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Аніме</button>
+                <button onclick="filterCategory('minimalism')" class="cat-btn px-4 py-2 rounded-xl text-sm font-bold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">Мінімалізм</button>
+                <a href="catalog.html" class="px-4 py-2 rounded-xl text-sm font-bold transition-all bg-pink-100 text-pink-700 hover:bg-pink-200 flex items-center gap-1.5">
+                    Весь каталог <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Dynamic Catalog Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Products rendered via JS -->
+        </div>
+
+        <!-- Кнопка переходу у повний каталог під 8 товарами -->
+        <div class="text-center mt-12">
+            <a href="catalog.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl gradient-btn text-white font-black text-base shadow-xl hover:scale-105 transition-transform">
+                <i class="fa-solid fa-border-all"></i>
+                Переглянути весь каталог
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
 
         <!-- LIVE CUSTOMIZER / BUILDER SECTION -->
         <section id="builder" class="py-20 bg-slate-900 text-white relative overflow-hidden">
@@ -660,7 +672,7 @@
             <div>
                 <h4 class="text-white font-bold mb-4">Ми в соцмережах</h4>
                 <div class="flex gap-3 text-lg">
-                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/evoprint.ua/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors"><i class="fa-brands fa-telegram"></i></a>
                     <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-purple-600 hover:text-white transition-colors"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
@@ -673,60 +685,72 @@
     </footer>
 
     <script>
-        // Catalog Products Data
-        const products = [
-            { id: 1, title: 'Футболка "Evo Gradient"', price: 590, category: 'trend', image: './img/IMG_9278.jpg' },
-            { id: 2, title: 'Футболка "Cyber Neon"', price: 620, category: 'trend', image: './img/IMG_9279.jpg' },
-            { id: 3, title: 'Футболка "Воля & Свобода"', price: 580, category: 'patriotic', image: './img/IMG_9280.jpg' },
-            { id: 4, title: 'Футболка "Anime Power"', price: 650, category: 'anime', image: './img/IMG_9281.jpg' },
-            { id: 5, title: 'Футболка "Minimal Lines"', price: 520, category: 'minimalism', image: './img/IMG_9282.jpg' },
-            { id: 6, title: 'Футболка "Future Vision"', price: 640, category: 'trend', image: './img/IMG_9283.jpg' },
-            { id: 7, title: 'Футболка "UA Spirit"', price: 590, category: 'patriotic', image: './img/IMG_9284.jpg' },
-            { id: 8, title: 'Футболка "Tokyo Vibe"', price: 630, category: 'anime', image: './img/IMG_9285.jpg' },
-        ];
+    // 1. Вставте сюди ваше скопійоване посилання з Google Apps Script
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxKLRnceMAUUTbebw580QR2TDnCkb-Dw5Ps-mJLd4N8r87A-NdV3ONNxvine8J7QC9-Uw/exec';
 
-        let cart = [];
+    let products = [];
 
-        // Render Catalog Products
-        function renderProducts(items) {
-    const grid = document.getElementById('product-grid');
-    grid.innerHTML = items.map(product => `
-        <div class="group bg-slate-50 rounded-2xl p-4 border border-slate-200/80 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-            <div class="aspect-square bg-white rounded-xl mb-4 overflow-hidden relative flex items-center justify-center p-6 border border-slate-100">
-                
-                <!-- Замість SVG вставили картинку з масиву об'єктів -->
-                <img src="${product.image}" alt="${product.title}" class="w-full h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
-                
-                <span class="absolute top-3 right-3 bg-white/90 px-2 py-1 rounded-md text-[10px] font-black text-slate-700 uppercase shadow-sm">
-                    Хіт
-                </span>
+    // Функція відображення товарів
+    function renderProducts(items) {
+        const grid = document.getElementById('product-grid');
+        if (!grid) {
+            console.error('Не знайдено елемент з id="product-grid"');
+            return;
+        }
+        
+        // Беремо тільки перші 8 товарів для головної сторінки
+        const displayItems = items.slice(0, 8);
+
+        grid.innerHTML = displayItems.map(product => `
+            <div class="group bg-slate-50 rounded-2xl p-4 border border-slate-200/80 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="aspect-square bg-white rounded-xl mb-4 overflow-hidden relative flex items-center justify-center p-6 border border-slate-100">
+                    <img src="${product.image}" alt="${product.title}" class="w-full h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <span class="absolute top-3 right-3 bg-white/90 px-2 py-1 rounded-md text-[10px] font-black text-slate-700 uppercase shadow-sm">Хіт</span>
+                </div>
+                <h3 class="font-extrabold text-slate-800 text-base mb-1">${product.title}</h3>
+                <div class="flex items-center justify-between mt-3">
+                    <span class="text-xl font-black text-slate-900">${product.price} ₴</span>
+                    <button onclick="addToCart(${product.id})" class="px-4 py-2 rounded-xl gradient-btn text-white text-xs font-black shadow-sm">В кошик</button>
+                </div>
             </div>
-            <h3 class="font-extrabold text-slate-800 text-base mb-1">${product.title}</h3>
-            <div class="flex items-center justify-between mt-3">
-                <span class="text-xl font-black text-slate-900">${product.price} ₴</span>
-                <button onclick="addToCart(${product.id})" class="px-4 py-2 rounded-xl gradient-btn text-white text-xs font-black shadow-sm">
-                    В кошик
-                </button>
-            </div>
-        </div>
-    `).join('');
-}
+        `).join('');
+    }
+
+    // Отримання даних з Google Таблиці
+    async function fetchProducts() {
+        try {
+            const response = await fetch(GOOGLE_SHEET_URL);
+            products = await response.json();
+            console.log('Завантажені товари:', products);
+            renderProducts(products);
+        } catch (error) {
+            console.error('Помилка завантаження товарів з Google Таблиці:', error);
+        }
+    }
+
+    // Запуск завантаження після повного завантаження сторінки
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchProducts();
+    });
 
         // Filter Categories
-        function filterCategory(category) {
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-slate-900', 'text-white');
-                btn.classList.add('bg-slate-100', 'text-slate-600');
-            });
-            event.target.classList.remove('bg-slate-100', 'text-slate-600');
-            event.target.classList.add('bg-slate-900', 'text-white');
+        // Оновлена функція фільтрації для index.html
+function filterCategory(category) {
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+    });
+    if (event && event.target && event.target.classList.contains('cat-btn')) {
+        event.target.classList.remove('bg-slate-100', 'text-slate-600');
+        event.target.classList.add('bg-slate-900', 'text-white');
+    }
 
-            if (category === 'all') {
-                renderProducts(products);
-            } else {
-                renderProducts(products.filter(p => p.category === category));
-            }
-        }
+    if (category === 'all') {
+        renderProducts(products);
+    } else {
+        renderProducts(products.filter(p => p.category === category));
+    }
+}
 
         // Cart Logic
         function addToCart(productId) {
