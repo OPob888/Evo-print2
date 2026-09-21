@@ -231,7 +231,7 @@
 
     // Розумне завантаження з кешуванням
     async function fetchProducts() {
-        const cachedProducts = localStorage.getItem('evo_products');
+        const cachedProducts = localStorage.getItem('evo_products_v2');
 
         if (cachedProducts) {
             // Миттєвий вивід товарів із пам'яті браузера
@@ -247,7 +247,7 @@
             const response = await fetch(GOOGLE_SHEET_URL);
             const freshProducts = await response.json();
             
-            localStorage.setItem('evo_products', JSON.stringify(freshProducts));
+            localStorage.setItem('evo_products_v2', JSON.stringify(freshProducts));
             products = freshProducts;
             renderProducts();
         } catch (error) {
